@@ -39,7 +39,8 @@ public partial class ShopDpContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=shop_dp;Username=postgres;Password=1111");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=123;Username=postgres;Password=1111");
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -70,7 +71,7 @@ public partial class ShopDpContext : DbContext
             entity.ToTable("manufacturers");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.ManufacturerName).HasColumnName("manufacturer_name");
+            entity.Property(e => e.ManufacturerName).HasColumnName("manufacture_name");
         });
 
         modelBuilder.Entity<Measure>(entity =>
@@ -93,7 +94,7 @@ public partial class ShopDpContext : DbContext
             entity.Property(e => e.Code).HasColumnName("code");
             entity.Property(e => e.DeliveryDate).HasColumnName("delivery_date");
             entity.Property(e => e.IdDeliveryPoint).HasColumnName("id_delivery_point");
-            entity.Property(e => e.IdStatuses).HasColumnName("id_statuses");
+            entity.Property(e => e.IdStatuses).HasColumnName("id_status");
             entity.Property(e => e.IdUser).HasColumnName("id_user");
             entity.Property(e => e.OrderDate).HasColumnName("order_date");
 
@@ -118,11 +119,11 @@ public partial class ShopDpContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Art).HasColumnName("art");
-            entity.Property(e => e.CointInStock).HasColumnName("coint_in_stock");
+            entity.Property(e => e.CointInStock).HasColumnName("count_in_stock");
             entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.Discount).HasColumnName("discount");
             entity.Property(e => e.IdCategory).HasColumnName("id_category");
-            entity.Property(e => e.IdManufacturer).HasColumnName("id_manufacturer");
+            entity.Property(e => e.IdManufacturer).HasColumnName("id_manufacture");
             entity.Property(e => e.IdMeasure).HasColumnName("id_measure");
             entity.Property(e => e.IdSupplier).HasColumnName("id_supplier");
             entity.Property(e => e.IdType).HasColumnName("id_type");
